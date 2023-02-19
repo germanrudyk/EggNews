@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.thymeleaf.org">
+  <head>
+    <title>Egg News</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navBar">
+      <div class="containerImg ps-3">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+          <img class="logo" th:src="@{/img/Egg.png}" alt="Img logo egg" />
+        </a>
+      </div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="d-inline-flex container-fluid justify-content-evenly w-50"
+        id="navbarNavDropdown"
+      >
+        <span class="fs-1 fw-bold">Portal de Noticias</span>
+        <a th:href="@{/admin/noticias}"
+          ><button class="btn btn-outline-success ms-5">Ver Noticias</button></a
+        >
+        <a th:href="@{/admin/agregar}"
+          ><button class="btn btn-outline-success ms-5">
+            Agregar Noticia
+          </button></a
+        >
+      </div>
+    </nav>
+
+    <div class="d-flex justify-content-left">
+      <div
+        th:if="${error}!=null"
+        class="card text-white bg-danger ms-5 mensajeError w-25"
+      >
+        <div class="card-body">
+          <h5 class="card-title">Error ð</h5>
+          <p class="card-text" th:text="${error}"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="m-5">
+      <form
+        action="/admin/registro"
+        class="bg-warning border border-opacity-100 rounded d-flex row g-5 m-5"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <div class="row-md-4">
+          <label for="validationServer03" class="form-label">Titulo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="validationServer01"
+            name="titulo"
+            required
+          />
+        </div>
+
+        <div class="row-md-6">
+          <label for="validationServer03" class="form-label">Encabezilla</label>
+          <input
+            type="text"
+            class="form-control"
+            id="validationServer03"
+            aria-describedby="validationServer03Feedback"
+            name="encabezilla"
+            required
+          />
+        </div>
+        <div class="row-md-3">
+          <label for="validationServer05" class="form-label"
+            >Cuerpo de la noticia</label
+          >
+          <textarea
+            type="text"
+            class="form-control"
+            id="validationServer05"
+            aria-describedby="validationServer05Feedback"
+            name="cuerpo"
+            required
+          ></textarea>
+        </div>
+        <div class="row-md-3">
+          <label for="validationServer05" class="form-label">Imagen</label>
+          <input type="file" name="imagen" />
+        </div>
+
+        <div class="col-12 p-4">
+          <button class="btn btn-primary" type="submit">Agregar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Pie de página-->
+    <div class="d-flex justify-content-center py-5 bg-black text-light mt-5">
+      <footer>
+        <div class="container text-light">All rights - 2023</div>
+      </footer>
+    </div>
+  </body>
+</html>

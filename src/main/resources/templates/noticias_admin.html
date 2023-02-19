@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.thymeleaf.org">
+  <head>
+    <title>Egg News</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <nav class="navbar navbar-expand-lg navBar">
+      <div class="containerImg ps-3">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+          <img class="logo" th:src="@{/img/Egg.png}" alt="Img logo egg" />
+        </a>
+      </div>
+
+      <div
+        class="d-inline-flex container-fluid justify-content-evenly w-50"
+        id="navbarNavDropdown"
+      >
+        <span class="fs-1 fw-bold">Portal de Noticias</span>
+        <a th:href="@{/admin/noticias}"
+          ><button class="btn btn-outline-success ms-5">Ver Noticias</button></a
+        >
+        <a th:href="@{/admin/agregar}"
+          ><button class="btn btn-outline-success ms-5">
+            Agregar Noticia
+          </button></a
+        >
+      </div>
+    </nav>
+
+    <div class="container">
+      <div
+        class="container-fluid d-inline-flex justify-content-evenly row row-cols-1 row-cols-md-3 g-4"
+      >
+        <div th:each="noticia : ${noticias}" class="col">
+          <div class="card">
+            <a
+              style="color: black; text-decoration: none"
+              th:href="@{/usuario/noticias/__${noticia.id}__}"
+            >
+              <img
+                th:src="@{'/img/' + ${noticia.imagen}}"
+                class="card-img-top"
+                alt="..."
+              />
+            </a>
+            <div class="card-body">
+              <h3 th:text="${noticia.titulo}" class="card-title fw-bold"></h3>
+              <p
+                th:text="${noticia.encabezilla}"
+                class="card-text text-justify"
+              ></p>
+              <div class="d-flex justify-content-evenly">
+                <a th:href="@{/admin/modificar/__${noticia.id}__}"
+                  ><button class="btn btn-outline-warning me-2">Modificar</button></a
+                >
+                <a th:href="@{/admin/eliminar/__${noticia.id}__}"
+                  ><button class="btn btn-outline-danger me-2">Eliminar</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pie de página-->
+    <div class="d-flex justify-content-center py-5 bg-black text-light mt-5">
+      <footer>
+        <div class="container text-light">All rights - 2023</div>
+      </footer>
+    </div>
+  </body>
+</html>

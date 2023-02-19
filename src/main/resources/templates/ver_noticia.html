@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.thymeleaf.org">
+  <head>
+    <title>Egg News</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Encabezado -->
+    <nav class="navbar navbar-expand-lg navBar">
+      <div class="containerImg ps-3">
+        <a href="/" class="navbar-brand d-flex align-items-center">
+          <img class="logo" th:src="@{/img/Egg.png}" alt="Img logo egg" />
+        </a>
+      </div>
+
+      <div
+        class="d-inline-flex container-fluid justify-content-evenly width-50"
+        id="navbarNavDropdown"
+      >
+        <span class="fs-1 fw-bold">Portal de Noticias</span>
+        <a th:href="@{/admin/noticias}"
+          ><button class="btn btn-outline-success me-2">Panel Admin</button></a
+        >
+      </div>
+    </nav>
+
+    <div th:if="${noticia} != null">
+      <div class="d-flex justify-content-evenly">
+        <div class=" w-75 m-4 p-5">
+          <h1 class="fw-bold" th:text="${noticia.titulo}"></h1>
+          <br>
+          <h4 style="font-family: 'Lato', sans-serif; text-align: justify;" th:text="${noticia.encabezilla}"></h4>
+          <br>
+          <br>
+          <img
+            th:src="@{'/img/' + ${noticia.imagen}}"
+            alt="${noticia.imagen}"
+          />
+          <br>
+          <br>
+          <br>
+          <p style="font-family: 'Lato', sans-serif; text-align: justify;"class="fs-5" th:text="${noticia.cuerpo}"></p>
+        </div>
+      
+      <div style="justify-content: center; align-items: center;" class="d-flex justify-content-center w-25">
+        <div style="justify-content: center; align-items: center;"class="row row-cols-2 d-flex justify-content-around h-50">
+        
+                <img style="width: 320px; height: 320px;" class="containerImg mb-5" th:src="@{/img/imgEgg.png}" alt="">        
+                
+            
+                <img style="width: 320px; height: 320px;" class="containerImg mt-3" th:src="@{/img/FondoZoom_1.jpg}" alt="">
+               
+            
+        </table>
+        </div>
+        
+        
+      </div>
+    </div>
+    </div>
+
+    <!-- Pie de página -->
+    <div class="d-flex justify-content-center py-5 bg-black text-light mt-5">
+      <footer>
+        <div class="container text-light">All rights - 2023</div>
+      </footer>
+    </div>
+  </body>
+</html>
